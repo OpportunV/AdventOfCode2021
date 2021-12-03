@@ -19,8 +19,16 @@ namespace AdventOfCode2021.Helpers
         };
         public static string[] GetInput(string path)
         {
-            var tmp = File.ReadLines(Path.Combine(path));
-            return tmp as string[] ?? tmp.ToArray();
+            try
+            {
+                var tmp = File.ReadLines(Path.Combine(path));
+                return tmp as string[] ?? tmp.ToArray();
+            }
+            catch (FileNotFoundException)
+            {
+                return new[] { "" };
+            }
+            
         }
         
         public static IEnumerable<(int, int)> Adjacent((int, int) pos, int width, int height)

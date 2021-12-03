@@ -52,20 +52,21 @@ namespace AdventOfCode2021
                 textBox2.Size = new Size(ElementWidth, ElementHeight);
                 
 
-                async void OnButtonAllOnClick(object sender, EventArgs args)
+                async void OnButtonClick(object sender, EventArgs args)
                 {
                     var (ans1, ans2) = await Task.Run(() => GetSolutions(className));
                     textBox1.Text = ans1;
                     textBox2.Text = ans2;
                 }
 
-                button.Click += OnButtonAllOnClick;
-                buttonAll.Click += OnButtonAllOnClick;
+                button.Click += OnButtonClick;
+                buttonAll.Click += OnButtonClick;
                 buttonClearAll.Click += (sender, args) =>
                 {
                     textBox1.Text = "";
                     textBox2.Text = "";
                 };
+                OnButtonClick(new object(), EventArgs.Empty);
             }
             
             AutoSize = true;

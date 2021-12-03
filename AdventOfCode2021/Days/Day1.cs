@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using System.Threading;
+using System.Linq;
 using AdventOfCode2021.Helpers;
 
 namespace AdventOfCode2021.Days
@@ -11,32 +11,38 @@ namespace AdventOfCode2021.Days
         
         public static object Part1()
         {
-            string[] lines;
-            try
+            var lines = Helper.GetInput(_inputPath);
+
+            var numbers = lines.Select(int.Parse).ToArray();
+
+            var ans = 0;
+            for (int i = 0; i < numbers.Length - 1; i++)
             {
-                lines = Helper.GetInput(_inputPath);
-            }
-            catch (FileNotFoundException)
-            {
-                return -1;
+                if (numbers[i + 1] - numbers[i] > 0)
+                {
+                    ans++;
+                }
             }
             
-            return -1;
+            return ans;
         }
         
         public static object Part2()
         {
-            string[] lines;
-            try
+            var lines = Helper.GetInput(_inputPath);
+            
+            var numbers = lines.Select(int.Parse).ToArray();
+
+            var ans = 0;
+            for (int i = 0; i < numbers.Length - 3; i++)
             {
-                lines = Helper.GetInput(_inputPath);
-            }
-            catch (FileNotFoundException)
-            {
-                return -1;
+                if (numbers[i + 3] > numbers[i])
+                {
+                    ans++;
+                }
             }
             
-            return -1;
+            return ans;
         }
     }
 }

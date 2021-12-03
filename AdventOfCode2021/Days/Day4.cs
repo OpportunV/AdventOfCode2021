@@ -10,30 +10,14 @@ namespace AdventOfCode2021.Days
         
         public static object Part1()
         {
-            string[] lines;
-            try
-            {
-                lines = Helper.GetInput(_inputPath);
-            }
-            catch (FileNotFoundException)
-            {
-                return -1;
-            }
+            var lines = Helper.GetInput(_inputPath);
 
             return -1;
         }
         
         public static object Part2()
         {
-            string[] lines;
-            try
-            {
-                lines = Helper.GetInput(_inputPath);
-            }
-            catch (FileNotFoundException)
-            {
-                return -1;
-            }
+            var lines = Helper.GetInput(_inputPath);
             
             return -1;
         }

@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Linq;
 using AdventOfCode2021.Helpers;
 
 namespace AdventOfCode2021.Days
@@ -11,41 +10,66 @@ namespace AdventOfCode2021.Days
         
         public static object Part1()
         {
-            string[] lines;
-            try
+            var lines = Helper.GetInput(_inputPath);
+
+            long xPos = 0;
+            long depth = 0;
+
+            foreach (var line in lines)
             {
-                lines = Helper.GetInput(_inputPath);
-            }
-            catch (FileNotFoundException)
-            {
-                return -1;
+                var tmp = line.Split(' ');
+                var cmd = tmp[0];
+                var value = long.Parse(tmp[1]);
+
+                switch (cmd)
+                {
+                    case "forward":
+                        xPos += value;
+                        break;
+                    case "down":
+                        depth += value;
+                        break;
+                    case "up":
+                        depth -= value;
+                        break;
+                    
+                }
             }
             
-            return -1;
+            return xPos * depth;
         }
         
         public static object Part2()
         {
-            string[] lines;
-            try
+            var lines = Helper.GetInput(_inputPath);
+            
+            long xPos = 0;
+            long depth = 0;
+            long aim = 0;
+
+            foreach (var line in lines)
             {
-                lines = Helper.GetInput(_inputPath);
-            }
-            catch (FileNotFoundException)
-            {
-                return -1;
+                var tmp = line.Split(' ');
+                var cmd = tmp[0];
+                var value = long.Parse(tmp[1]);
+
+                switch (cmd)
+                {
+                    case "forward":
+                        xPos += value;
+                        depth += aim * value;
+                        break;
+                    case "down":
+                        aim += value;
+                        break;
+                    case "up":
+                        aim -= value;
+                        break;
+                    
+                }
             }
             
-            return -1;
-        }
-
-        private static void ParseInput(string input, out int min, out int max, out char letter, out string password)
-        {
-            var splits = input.Split(' ');
-            var tmp = splits[0].Split('-');
-            (min, max) = (int.Parse(tmp[0]), int.Parse(tmp[1]));
-            letter = splits[1].TrimEnd(':').ToCharArray()[0];
-            password = splits[2];
+            return xPos * depth;
         }
     }
 }
