@@ -3,7 +3,7 @@ using AdventOfCode2021.Helpers;
 
 namespace AdventOfCode2021.Days
 {
-    public class Day19
+    public static class Day19
     {
         private static readonly string _inputPath = Path.Combine("input",
             $"{System.Reflection.MethodBase.GetCurrentMethod().DeclaringType?.Name}.txt");
