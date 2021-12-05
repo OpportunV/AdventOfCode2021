@@ -62,7 +62,6 @@ namespace AdventOfCode2021.Days
         {
             var lines = Helper.GetInput(_inputPath);
 
-            _map.Clear();
             foreach (var line in lines)
             {
                 var matches = Regex.Matches(line, @"\d+");
@@ -71,33 +70,7 @@ namespace AdventOfCode2021.Days
                 var x2 = int.Parse(matches[2].Value);
                 var y2 = int.Parse(matches[3].Value);
                 
-                if (x1 == x2)
-                {
-                    (y1, y2) = (Math.Min(y1, y2), Math.Max(y1, y2));
-                    for (int y = y1; y <= y2; y++)
-                    {
-                        if (!_map.ContainsKey((x1, y)))
-                        {
-                            _map[(x1, y)] = 0;
-                        }
-                        
-                        _map[(x1, y)]++;
-                    }
-                } 
-                else if (y1 == y2)
-                {
-                    (x1, x2) = (Math.Min(x1, x2), Math.Max(x1, x2));
-                    for (int x = x1; x <= x2; x++)
-                    {
-                        if (!_map.ContainsKey((x, y1)))
-                        {
-                            _map[(x, y1)] = 0;
-                        }
-                        
-                        _map[(x, y1)]++;
-                    }
-                }
-                else
+                if (x1 != x2 && y1 != y2)
                 {
                     var stepX = x1 < x2 ? 1 : -1;
                     var stepY = y1 < y2 ? 1 : -1;
