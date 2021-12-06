@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode2021.Helpers
 {
     public static class Extensions
     {
+        public static string Sorted(this string s)
+        {
+            return string.Concat(s.OrderBy(c => c));
+        }
+        
         public static string Reversed(this string str)
         {
             var chars = str.ToCharArray();
@@ -42,6 +48,41 @@ namespace AdventOfCode2021.Helpers
             }
 
             return result;
+        }
+
+        public static TValue GetOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue @default)
+        {
+            if (dictionary.ContainsKey(key))
+            {
+                return dictionary[key];
+            }
+
+            return @default;
+        }
+
+        public static (int, int) Add(this (int, int) self, (int, int) other)
+        {
+            var (item1, item2) = self;
+            var (i, item3) = other;
+            return (item1 + i, item2 + item3);
+        }
+        
+        public static IEnumerable<(T, T)> DoubleIteration<T>(this IEnumerable<T> enumerable)
+        {
+            var array = enumerable as T[] ?? enumerable.ToArray();
+            for (var i = 0; i < array.Length; i++)
+            {
+                var first = array[i];
+                for (var j = 0; j < array.Length; j++)
+                {
+                    if (i == j)
+                    {
+                        continue;
+                    }
+                    var second = array[j];
+                    yield return (first, second);
+                }
+            }
         }
     }
 }
