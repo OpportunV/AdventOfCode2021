@@ -17,6 +17,16 @@ namespace AdventOfCode2021.Helpers
             ( 1,  0),
             ( 1,  1),
         };
+        
+        public static readonly List<(int, int)> SideDirections = new List<(int, int)>
+        {
+            (-1,  0),
+            ( 0, -1),
+            ( 0,  1),
+            ( 1,  0),
+        };
+        
+        
         public static string[] GetInput(string path)
         {
             try
@@ -35,6 +45,28 @@ namespace AdventOfCode2021.Helpers
         {
             var (x, y) = pos;
             foreach (var (i, j) in Directions)
+            {
+                
+                var curX = x + i;
+                if (curX < 0 || height <= curX)
+                {
+                    continue;
+                }
+                
+                var curY = y + j;
+                if (curY < 0 || width <= curY)
+                {
+                    continue;
+                }
+
+                yield return (curX, curY);
+            }
+        }
+        
+        public static IEnumerable<(int, int)> SideAdjacent((int, int) pos, int width, int height)
+        {
+            var (x, y) = pos;
+            foreach (var (i, j) in SideDirections)
             {
                 
                 var curX = x + i;
