@@ -13,7 +13,7 @@ namespace AdventOfCode2021.Days
         private static long _flashCounter;
         private static int _width;
         private static int _height;
-        private static HashSet<(int, int)> _flashedThisTurn = new HashSet<(int, int)>();
+        private static readonly HashSet<(int, int)> _flashedThisTurn = new HashSet<(int, int)>();
 
         public static object Part1()
         {
