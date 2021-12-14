@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -124,8 +123,6 @@ namespace AdventOfCode2021.Days
 
                 ans += "\n";
             }
-            
-            Console.WriteLine(ans);
 
             return ans;
         }
