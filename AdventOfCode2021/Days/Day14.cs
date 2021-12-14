@@ -53,7 +53,7 @@ namespace AdventOfCode2021.Days
                 counter[chr] += 1;
             }
 
-            return counter.Max(item => item.Value) - counter.Min(item => item.Value);;
+            return counter.Max(item => item.Value) - counter.Min(item => item.Value);
         }
         
         public static object Part2()
@@ -114,7 +114,7 @@ namespace AdventOfCode2021.Days
                 counter[key] += value;
             }
 
-            return counter.Max(item => item.Value) - counter.Min(item => item.Value);;
+            return counter.Max(item => item.Value) - counter.Min(item => item.Value);
         }
     }
 }
