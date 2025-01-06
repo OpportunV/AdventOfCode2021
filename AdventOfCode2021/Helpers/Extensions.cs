@@ -67,7 +67,7 @@ namespace AdventOfCode2021.Helpers
             return (item1 + i, item2 + item3);
         }
         
-        public static IEnumerable<(T, T)> DoubleIteration<T>(this IEnumerable<T> enumerable)
+        public static IEnumerable<(T first, T second)> DoubleIteration<T>(this IEnumerable<T> enumerable)
         {
             var array = enumerable as T[] ?? enumerable.ToArray();
             for (var i = 0; i < array.Length; i++)
